@@ -8,11 +8,10 @@ class SLL:
         self.head = None
 
     def append(self,value):
-
         if self.head == None:
             newnode = Node(value)
             self.head = newnode
-
+            return self
         else:
             runner = self.head
 
@@ -20,6 +19,7 @@ class SLL:
                 runner = runner.next
             newnode = Node(value)
             runner.next = newnode
+        return self
 
     def display(self):
         runner = self.head
@@ -33,10 +33,10 @@ class SLL:
 
 #*****************My Code******************************************
     def addToFront(self, val):
+        newNode = Node(val)
         if self.head == None:
             self.head = newNode
         else:
-            newNode = Node(val)
             newNode.next = self.head
             self.head = newNode
         return self
@@ -73,18 +73,28 @@ class SLL:
                     return True
             else:
                 return False
+
+    def length(self):
+        if self.head == None:
+            print(f'SLL length = 0')
+            return 0
+        else:
+            cntr = 0
+            runner = self.head
+            if runner.next != None:
+                while runner.next != None:
+                    cntr += 1
+                    runner = runner.next
+                print(f'SLL length = {cntr + 1}')
+                return cntr + 1
+            print(f'SLL length = 1')
+            return 1
+
 #*****************************************************************
         
 newSLL = SLL()
-newSLL.append(5)
-newSLL.append(6)
-newSLL.append(3)
-newSLL.append(8)
+newSLL.append(5).append(6).append(3).append(8).addToFront(20).addToFront(-1)
 newSLL.display()
-
-newSLL.addToFront(20)
-newSLL.display()
-newSLL.addToFront(-1)
-newSLL.display()
-newSLL.contains(3)
-newSLL.contains(18)
+# newSLL.contains(3)
+# newSLL.contains(18)
+newSLL.length()
