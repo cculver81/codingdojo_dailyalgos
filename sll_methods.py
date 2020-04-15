@@ -6,10 +6,11 @@ class Node:
 class SLL:
     def __init__(self):
         self.head = None
+        self.tail = None 
 
     def append(self,value):
+        newnode = Node(value)
         if self.head == None:
-            newnode = Node(value)
             self.head = newnode
             return self
         else:
@@ -17,8 +18,8 @@ class SLL:
 
             while runner.next != None:
                 runner = runner.next
-            newnode = Node(value)
             runner.next = newnode
+            self.tail = newnode
         return self
 
     def display(self):
@@ -73,7 +74,7 @@ class SLL:
                     return True
             else:
                 return False
-
+#***
     def length(self):
         if self.head == None:
             print(f'SLL length = 0')
@@ -90,6 +91,32 @@ class SLL:
             print(f'SLL length = 1')
             return 1
 
+    def removeFront(self):
+        if self.length == 0:
+            return self
+        elif self.length == 1:
+            self.head = None
+            return self
+        else:
+            runner = self.head
+            self.head = runner.next
+            runner = None
+            return self
+
+    def removeBack(self):
+        if self.length == 0:
+            return self
+        elif self.length == 1:
+            self.head = None
+            return self
+        else:
+            runner = self.head
+            while runner.next.next != None:
+                runner = runner.next
+            runner.next = None
+            return self
+
+
 #*****************************************************************
         
 newSLL = SLL()
@@ -98,3 +125,5 @@ newSLL.display()
 # newSLL.contains(3)
 # newSLL.contains(18)
 newSLL.length()
+newSLL.removeBack()
+newSLL.display()
