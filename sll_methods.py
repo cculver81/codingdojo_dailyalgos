@@ -218,6 +218,9 @@ class SLL:
                 prevNode = prevNode.next
             return self
 
+#*************
+#   4/17/2020
+
     def appendVal(self, inputValue, after=None):
         if after == None or self.head == None:
             self.addToBack(inputValue)
